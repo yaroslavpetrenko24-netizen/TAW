@@ -1,0 +1,39 @@
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+}
+
+h1{
+    background-color: #2c3e50;
+    color:#ecf0f1;
+    padding: 20cm;
+    text-align:center;
+}
+
+main{
+    display:flex;
+}
+
+section{
+    width:40%;
+    height:20%;
+    padding:15cm;
+    border-color:#ecf0f1;
+}
+
+article{
+    width:60%;
+    height:20%;
+    padding:15cm;
+}
+
+form{
+    width:90%;
+    height:20%;
+    margin-bottom:10cm;
+    padding:6cm;
+}
+
+table{
+
+}
