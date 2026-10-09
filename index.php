@@ -43,7 +43,7 @@ $scrypt1 = mysqli_query($conn, "SELECT id, nazwa, cena FROM uslugi;");
         </section>
     </main>
 
-    <footer> Autor: Yaroslav Petrenko </footer>
+    <footer> Autor: Yaroslav Petrenko | YaroslavP24 </footer>
 </body>
 
 </html>
