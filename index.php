@@ -3,7 +3,30 @@
 
 <?php
 $conn = mysqli_connect("localhost", "root", "", "warsztat");
+
+// Skrypt 1
 $scrypt1 = mysqli_query($conn, "SELECT id, nazwa, cena FROM uslugi;");
+
+// Skrypt 2
+$checkname = $_POST["imie"];
+$checknumber =$_POST["number"];
+
+if(isset($_POST["name"], $_POST["number"], $_POST["usluga"])){
+    echo "Jest przeslana przez POST";
+}
+
+if(empty($checkname) || empty($checknumber)){
+    echo "Wszystkie pola musza byc wypelnione";
+}
+else{
+    echo "Zgloszenie zostalo pomyslnie dodane";
+}
+
+//Skrypt 3
+
+$scrypt2 = mysqli_query($conn,"SELECT zgloszenia.klient, zgloszenia.nr_rejestracyjny, uslugi.nazwa, uslugi.cena, zgloszenia.opis FROM zgloszenia JOIN uslugi ON zgloszenia.uslugi_id = uslugi.id ORDER BY zgloszenia.id DESC");
+
+
 ?>
 
 <head>
@@ -21,14 +44,14 @@ $scrypt1 = mysqli_query($conn, "SELECT id, nazwa, cena FROM uslugi;");
         <section id="left">
             <h2>Nowe Zgloszenie</h2>
             <form method="POST">
-                <label for="name">Imie i nazwisko:</label>
-                <input type="text" name="name">
+                <label for="Imie">Imie i nazwisko:</label>
+                <input type="text" name="imie">
                 <label for="number">Numer rejestracyjny pojazdu: </label>
                 <input type="text" name="number">
                 <select name="usluga" id="list_rozwijana">
                     <?php
                     while ($row = mysqli_fetch_array($scrypt1)) {
-                        echo '<option value="' . $row["id"] . ">" . $row["nazwa"] . "</option>";
+                        echo '<option value=' . $row["id"] . '>' . $row["nazwa"] . '</option>';
                     }
                     ?>
                 </select>
@@ -39,7 +62,9 @@ $scrypt1 = mysqli_query($conn, "SELECT id, nazwa, cena FROM uslugi;");
 
         <section id="right">
             <h2>Ostatnie naprawy</h2>
-            <table> </table>
+            <table> 
+
+            </table>
         </section>
     </main>
 
