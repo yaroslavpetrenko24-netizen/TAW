@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<?php
+$conn = mysqli_connect("localhost", "root", "", "warsztat");
+$scrypt1 = mysqli_query($conn, "SELECT id, nazwa, cena FROM uslugi;");
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styl.css">
 </head>
-<body>
-    <h1>AutoSerwis - Panel Obslugi Zgloszen</h1>
-    <aricle>
-        <form action="" method="post">
-            <input type="text" name="" id="">
-            <input type="text" name="" id="">
 
-            <select>
-                <option value="option1">option1</option>
-                <option value="option2">option2</option>
-                <option value="option3">option3</option>
-            </select>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-            <submit value="Dodaj Zgloszenie"></submit>
-        </form>
-    </aricle>
-    <section>
-        <h2>Ostatnie  naprawy</h2>
-        <table>
-            <tr>
-                <th>Data</th>
-                <th>Marka</th>
-                <th>Model</th>
-                <th>Opis</th>
-            </tr>
-            <tr>
-                <td>2024-06-01</td>
-                <td>Ford</td>
-                <td>GT</td>
-                <td>Wheels</td>
-            </tr>
-        </table>
-    </section>
-    <footer>
-        <p>Autor</p>
-    </footer>
-    
+<body>
+    <header>
+        <h1>AutoSerwis - Panel Obslugi Zgloszen</h1>
+    </header>
+    <main>
+        <section id="left">
+            <h2>Nowe Zgloszenie</h2>
+            <form method="POST">
+                <label for="name">Imie i nazwisko:</label>
+                <input type="text" name="name">
+                <label for="number">Numer rejestracyjny pojazdu: </label>
+                <input type="text" name="number">
+                <select name="usluga" id="list_rozwijana">
+                    <?php
+                    while ($row = mysqli_fetch_array($scrypt1)) {
+                        echo '<option value="' . $row["id"] . ">" . $row["nazwa"] . "</option>";
+                    }
+                    ?>
+                </select>
+                <textarea></textarea>
+                <Button type="submit">Dodaj Zgloszenie</Button>
+            </form>
+        </section>
+
+        <section id="right">
+            <h2>Ostatnie naprawy</h2>
+            <table> </table>
+        </section>
+    </main>
+
+    <footer> Autor: Yaroslav Petrenko </footer>
 </body>
+
 </html>
